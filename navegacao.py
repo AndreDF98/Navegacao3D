@@ -16,7 +16,7 @@ largura = user32.GetSystemMetrics(0)
 centroTela = [largura // 2, altura // 2]
 matrixVisao = []
 
-cubo = pywavefront.Wavefront('laboratorio.obj')
+cubo = pywavefront.Wavefront('objetos/extintor.obj')
 
 def init():
     global matrixVisao
