@@ -1,0 +1,250 @@
+# Blender MTL File: 'laboratorio.blend'
+# Material Count: 24
+
+newmtl AvisoExtintor
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\avisoExtintor.jpg
+
+newmtl Borracha
+Ns 132.249995
+Ka 1.000000 1.000000 1.000000
+Kd 0.003642 0.003642 0.003642
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Etiqueta
+Ns 72.249984
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\etiqueta-extintor.jpg
+
+newmtl Luz
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Madeira
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.303197 0.115840 0.037075
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\TexturaMadeira2.jpg
+
+newmtl MadeiraEscura
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.303197 0.115840 0.037075
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\TexturaMadeira2.jpg
+
+newmtl Manometro
+Ns 600.249994
+Ka 0.683333 0.683333 0.683333
+Kd 0.090838 0.090838 0.090838
+Ks 0.533333 0.533333 0.533333
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\manometro.png
+
+newmtl Metal
+Ns 323.999994
+Ka 0.399242 0.399242 0.399242
+Kd 0.214035 0.214035 0.214035
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Metal2
+Ns 440.999985
+Ka 0.508333 0.508333 0.508333
+Kd 0.214034 0.177122 0.111323
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl MetalBranco
+Ns 540.562966
+Ka 0.200000 0.200000 0.200000
+Kd 0.661863 0.661863 0.661863
+Ks 0.641667 0.641667 0.641667
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl MetalCinza
+Ns 64.000164
+Ka 1.000000 1.000000 1.000000
+Kd 0.375749 0.375749 0.375749
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl MetalPreto
+Ns 612.562504
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl MetalVermelho
+Ns 495.062471
+Ka 0.058333 0.058333 0.058333
+Kd 0.969391 0.000000 0.003677
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+
+newmtl None
+Ns 500
+Ka 0.8 0.8 0.8
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+newmtl Paisagem
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\paisagemArvores.jpg
+
+newmtl PapelAmarelo
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.639829 0.278707
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl PapelAmareloClaro
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.747916 0.498821
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+
+newmtl PapelBranco
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.083333 0.083333 0.083333
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl ParedeClara
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.868885 0.779592 0.659812
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\textures\\TexturaParedeClara
+
+newmtl ParedeEscura
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.761272 0.698143 0.634308
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\textures\\TexturaParedeEscura
+
+newmtl Pedra
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.007799 0.012170 0.009698
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\textures\\TexturaMesa
+
+newmtl Piso
+Ns 624.999993
+Ka 1.000000 1.000000 1.000000
+Kd 0.108688 0.150231 0.173352
+Ks 0.233333 0.233333 0.233333
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\textures\\TexturaChao
+
+newmtl PlasticoLaranja
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.059527 0.015590
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Vidro
+Ns 900.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.691667 0.691667 0.691667
+Ke 0.0 0.0 0.0
+Ni 0.000000
+d 1.000000
+illum 2

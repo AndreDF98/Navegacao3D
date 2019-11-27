@@ -5,6 +5,9 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
+import pywavefront
+from pywavefront import visualization
+
 user32 = ctypes.windll.user32
 
 altura = user32.GetSystemMetrics(1)
@@ -12,6 +15,8 @@ largura = user32.GetSystemMetrics(0)
 
 centroTela = [largura // 2, altura // 2]
 matrixVisao = []
+
+cubo = pywavefront.Wavefront('laboratorio.obj')
 
 def init():
     global matrixVisao
@@ -39,27 +44,26 @@ def init():
 def display():
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     
-    
-    
     #glTranslatef(3, 0, 0)
-    glColor4f(0.5, 0.2, 0.2, 1)
-    glutSolidTeapot(1)
+    #glColor4f(0.5, 0.2, 0.2, 1)
+    #glutSolidTeapot(1)
+    visualization.draw(cubo)
     
-    glColor4f(0.2, 0.2, 0.5, 1)
-    glBegin(GL_QUADS)
-    glVertex3f(-5, -2, -2)
-    glVertex3f(5, -2, -2)
-    glVertex3f(5, 5, -2)
-    glVertex3f(-5, 5, -2)
-    glEnd()
-    
-    glColor4f(0.2, 0.5, 0.2, 1)
-    glBegin(GL_QUADS)
-    glVertex3f(-5, -2, -2)
-    glVertex3f(5, -2, -2)
-    glVertex3f(5, -2, 5)
-    glVertex3f(-5, -2, 5)
-    glEnd()
+    #glColor4f(0.2, 0.2, 0.5, 1)
+    #glBegin(GL_QUADS)
+    #glVertex3f(-5, -2, -2)
+    #glVertex3f(5, -2, -2)
+    #glVertex3f(5, 5, -2)
+    #glVertex3f(-5, 5, -2)
+    #glEnd()
+    #
+    #glColor4f(0.2, 0.5, 0.2, 1)
+    #glBegin(GL_QUADS)
+    #glVertex3f(-5, -2, -2)
+    #glVertex3f(5, -2, -2)
+    #glVertex3f(5, -2, 5)
+    #glVertex3f(-5, -2, 5)
+    #glEnd()
     
     glutSwapBuffers()
     glFlush ()
