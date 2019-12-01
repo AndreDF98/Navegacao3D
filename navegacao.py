@@ -16,7 +16,9 @@ largura = user32.GetSystemMetrics(0)
 centroTela = [largura // 2, altura // 2]
 matrixVisao = []
 
-cubo = pywavefront.Wavefront('objetos/extintor.obj')
+#objeto = pywavefront.Wavefront('objetos/extintor.obj')
+#objeto = pywavefront.Wavefront('objetos/cadeira.obj')
+objeto = pywavefront.Wavefront('objetos/laboratorio.obj')
 
 def init():
     global matrixVisao
@@ -24,46 +26,28 @@ def init():
     glEnable(GL_DEPTH_TEST)
     glEnable(GL_LIGHTING)
     glShadeModel(GL_SMOOTH)
+    glColorMaterial(GL_BACK, GL_DIFFUSE)
     glEnable(GL_COLOR_MATERIAL)
-    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE)
     glClearColor(0.1, 0.1, 0.1, 0.0)
     glutSetCursor(GLUT_CURSOR_DESTROY)
 
     glEnable(GL_LIGHT0)
     glLightfv(GL_LIGHT0, GL_AMBIENT, [0.5, 0.5, 0.5, 1])
     glLightfv(GL_LIGHT0, GL_DIFFUSE, [1.0, 1.0, 1.0, 1])
-    #glLightfv(GL_LIGHT0, GL_POSITION, [1, -1, 1, 0])
+    glLightfv(GL_LIGHT0, GL_POSITION, [1, -1, 1, 0])
 
     glMatrixMode(GL_PROJECTION)
     gluPerspective(45, (largura/altura), 0.1, 50.0)
     glMatrixMode(GL_MODELVIEW)
     gluLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0)
     matrixVisao = glGetFloatv(GL_MODELVIEW_MATRIX)
+    #perspectiveView
     glLoadIdentity()
 
 def display():
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     
-    #glTranslatef(3, 0, 0)
-    #glColor4f(0.5, 0.2, 0.2, 1)
-    #glutSolidTeapot(1)
-    visualization.draw(cubo)
-    
-    #glColor4f(0.2, 0.2, 0.5, 1)
-    #glBegin(GL_QUADS)
-    #glVertex3f(-5, -2, -2)
-    #glVertex3f(5, -2, -2)
-    #glVertex3f(5, 5, -2)
-    #glVertex3f(-5, 5, -2)
-    #glEnd()
-    #
-    #glColor4f(0.2, 0.5, 0.2, 1)
-    #glBegin(GL_QUADS)
-    #glVertex3f(-5, -2, -2)
-    #glVertex3f(5, -2, -2)
-    #glVertex3f(5, -2, 5)
-    #glVertex3f(-5, -2, 5)
-    #glEnd()
+    visualization.draw(objeto)
     
     glutSwapBuffers()
     glFlush ()
@@ -104,11 +88,9 @@ def movimentoMouse(x, y):
         #pass
         glRotatef(-0.5, 0.0, 1.0, 0.0)
         
-    # multiply the current matrix by the get the new view matrix and store the final vie matrix 
     glMultMatrixf(matrixVisao)
     matrixVisao = glGetFloatv(GL_MODELVIEW_MATRIX)
 
-    # apply view matrix
     glPopMatrix()
     glMultMatrixf(matrixVisao)
     
@@ -137,11 +119,9 @@ def keyboard(key, x, y):
     if ord(key) == 97:#'a'
         glTranslatef(0.2,0,0)
         
-    # multiply the current matrix by the get the new view matrix and store the final vie matrix 
     glMultMatrixf(matrixVisao)
     matrixVisao = glGetFloatv(GL_MODELVIEW_MATRIX)
 
-    # apply view matrix
     glPopMatrix()
     glMultMatrixf(matrixVisao)
     
@@ -150,7 +130,7 @@ def keyboard(key, x, y):
 glutInit(sys.argv) 
 glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)
 glutInitWindowSize(largura, altura)
-id = glutCreateWindow('Nav')
+id = glutCreateWindow('Navegacao')
 init()
 
 glutDisplayFunc(display)
