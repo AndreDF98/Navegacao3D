@@ -39,7 +39,7 @@ def init():
     glMatrixMode(GL_PROJECTION)
     gluPerspective(45, (largura/altura), 0.1, 50.0)
     glMatrixMode(GL_MODELVIEW)
-    gluLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0)
+    gluLookAt(0, 3, 3, 0, 0, 0, 0, 1, 0)
     matrixVisao = glGetFloatv(GL_MODELVIEW_MATRIX)
     #perspectiveView
     glLoadIdentity()

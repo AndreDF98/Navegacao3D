@@ -10,7 +10,7 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\avisoExtintor.jpg
+map_Kd texturas\\avisoExtintor.jpg
 
 newmtl Borracha
 Ns 132.249995
@@ -31,7 +31,7 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\etiqueta-extintor.jpg
+map_Kd texturas\\etiqueta-extintor.jpg
 
 newmtl Luz
 Ns 225.000000
@@ -52,7 +52,7 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\TexturaMadeira2.jpg
+map_Kd texturas\\TexturaMadeira2.jpg
 
 newmtl MadeiraEscura
 Ns 225.000000
@@ -63,7 +63,7 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\TexturaMadeira2.jpg
+map_Kd texturas\\TexturaMadeira2.jpg
 
 newmtl Manometro
 Ns 600.249994
@@ -74,7 +74,7 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 3
-map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\manometro.png
+map_Kd texturas\\manometro.png
 
 newmtl Metal
 Ns 323.999994
@@ -153,7 +153,7 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\paisagemArvores.jpg
+map_Kd texturas\\paisagemArvores.jpg
 
 newmtl PapelAmarelo
 Ns 225.000000
@@ -194,7 +194,7 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\textures\\TexturaParedeClara
+map_Kd texturas\\TexturaParedeClara
 
 newmtl ParedeEscura
 Ns 225.000000
@@ -205,7 +205,7 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\textures\\TexturaParedeEscura
+map_Kd texturas\\TexturaParedeEscura
 
 newmtl Pedra
 Ns 225.000000
@@ -216,7 +216,7 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\textures\\TexturaMesa
+map_Kd texturas\\TexturaMesa
 
 newmtl Piso
 Ns 624.999993
@@ -227,7 +227,7 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:\\Users\\andre\\Desktop\\My\\Modelos 3D\\Laboratorio\\textures\\TexturaChao
+map_Kd texturas\\TexturaChao
 
 newmtl PlasticoLaranja
 Ns 225.000000
