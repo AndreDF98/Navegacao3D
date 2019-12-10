@@ -5,6 +5,8 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
+import numpy as np
+
 import pywavefront
 from pywavefront import visualization
 
@@ -15,6 +17,11 @@ largura = user32.GetSystemMetrics(0)
 
 centroTela = [largura // 2, altura // 2]
 matrixVisao = []
+
+yaw = 0.0 #angulo X da camera
+pitch = 0.0 #angulo Y da camera
+cX, cY, cZ = [0.0, 3.0, 3.0] #posicao da camera
+strafeX, strafeZ = [0, 0] #deslocamento lateral
 
 #objeto = pywavefront.Wavefront('objetos/extintor.obj')
 #objeto = pywavefront.Wavefront('objetos/cadeira.obj')
@@ -61,69 +68,90 @@ def reshape(l, a):
 def cliqueMouse(botao, estado, x, y):
     return
 
+def refresh():
+    global strafeX
+    global strafeZ
+
+    x = np.cos(yaw) * np.cos(pitch)
+    y = np.sin(pitch)
+    z = np.sin(yaw) * np.cos(pitch)
+    
+    strafeX = np.cos(yaw - np.pi/2)
+    strafeZ = np.sin(yaw - np.pi/2)
+    
+    glMatrixMode(GL_MODELVIEW)
+    glLoadIdentity()
+    gluLookAt(cX, cY, cZ, cX + x, cY + y, cZ + z, 0, 1, 0)
+
 def movimentoMouse(x, y):
-    global matrixVisao
+    global yaw
+    global pitch
+    
+    limite = 1.5
+    vel = 0.02
+    
+    dx = x - centroTela[0]
+    dy = y - centroTela[1]
+    
+    if dx:
+        yaw += dx * vel
+        refresh()
+    
+    if dy:
+        pitch -= dy * vel
+        if pitch < (-limite):
+            pitch = -limite
+        if pitch > limite:
+            pitch = limite
+        refresh()
 
     glutWarpPointer(centroTela[0], centroTela[1])
-    
-    glLoadIdentity()
-    glPushMatrix()
-    glLoadIdentity()
-    
-    #baixo
-    if y > centroTela[1]:
-        #pass
-        glRotatef(0.5, 1.0, 0.0, 0.0)
-    #cima
-    if y < centroTela[1]:
-        #pass
-        glRotatef(-0.5, 1.0, 0.0, 0.0)
-    
-    #direita
-    if x > centroTela[0]:
-        #pass
-        glRotatef(0.5, 0.0, 1.0, 0.0)
-    #esquerda
-    if x < centroTela[0]:
-        #pass
-        glRotatef(-0.5, 0.0, 1.0, 0.0)
-        
-    glMultMatrixf(matrixVisao)
-    matrixVisao = glGetFloatv(GL_MODELVIEW_MATRIX)
-
-    glPopMatrix()
-    glMultMatrixf(matrixVisao)
     
     glutPostRedisplay()
 
 def arrasteMouse(x, y):
     glutWarpPointer(centroTela[0], centroTela[1])
 
-def keyboard(key, x, y):
-    global matrixVisao
+def moveZ(vel): #move pra frente ou pra tras
+    global cX
+    global cY
+    global cZ
     
-    glLoadIdentity()
-    glPushMatrix()
-    glLoadIdentity()
+    x = np.cos(yaw) * np.cos(pitch)
+    y = np.sin(pitch)
+    z = np.sin(yaw) * np.cos(pitch)
+    
+    cX += vel * x
+    cY += vel * y
+    cZ += vel * z
+    
+    refresh()
+    
+def moveX(vel): #move pra esquerda ou direita
+    global cX
+    global cZ
+    
+    cX += vel * strafeX
+    cZ += vel * strafeZ
+    
+    refresh()
+
+def keyboard(key, x, y):
 
     if ord(key) == 27:#'esc'  
         glutDestroyWindow(id)
         sys.exit(0)
     
+    vel = 0.2
+    
     if ord(key) == 119:#'w'
-        glTranslatef(0,0,0.2)
+        moveZ(vel)
     if ord(key) == 115:#'s'
-        glTranslatef(0,0,-0.2)
-    if ord(key) == 100:#'d'
-        glTranslatef(-0.2,0,0)
+        moveZ(-vel)
     if ord(key) == 97:#'a'
-        glTranslatef(0.2,0,0)
-        
-    glMultMatrixf(matrixVisao)
-    matrixVisao = glGetFloatv(GL_MODELVIEW_MATRIX)
-
-    glPopMatrix()
-    glMultMatrixf(matrixVisao)
+        moveX(vel)
+    if ord(key) == 100:#'d'
+        moveX(-vel)
     
     glutPostRedisplay()
 
@@ -137,7 +165,7 @@ glutDisplayFunc(display)
 glutReshapeFunc(reshape)
 glutMouseFunc(cliqueMouse)
 glutPassiveMotionFunc(movimentoMouse)
-glutMotionFunc(arrasteMouse)
+glutMotionFunc(movimentoMouse)
 glutKeyboardFunc(keyboard)
 
 glutFullScreen()
