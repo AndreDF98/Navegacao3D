@@ -26,7 +26,7 @@ pitch = -0.5 #angulo Y da camera
 cX, cY, cZ = [-0.75, 2.0, 2.0] #posicao da camera
 strafeX, strafeZ = [0, 0] #deslocamento lateral
 
-demonstratemode = False #Modo de mover camera automaticamente entorno do objeto
+demonstrateMode = False #Modo de mover camera automaticamente entorno do objeto
 
 #objeto = pywavefront.Wavefront('objetos/extintor.obj')
 #objeto = pywavefront.Wavefront('objetos/cadeira.obj')
@@ -72,7 +72,7 @@ def demonstrate():
     
 def display():
     glFlush()
-    if demonstratemode:
+    if demonstrateMode:
         demonstrate()
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     
@@ -108,23 +108,23 @@ def movimentoMouse1(x,y):
     pass
     
 def movimentoMouse(x, y):
-    global demonstratemode
+    global demonstrateMode
     global yaw
     global pitch
     
-    if not demonstratemode:
+    if not demonstrateMode:
         limite = 1.5
-        vel = 0.01
+        velMouse = 0.01
         
         dx = x - centroTela[0]
         dy = y - centroTela[1]
         
         if dx:
-            yaw += dx * vel
+            yaw += dx * velMouse
             refresh()
         
         if dy:
-            pitch -= dy * vel
+            pitch -= dy * velMouse
             if pitch < (-limite):
                 pitch = -limite
             if pitch > limite:
@@ -175,7 +175,7 @@ def moveY(up): #move pra esquerda ou direita
 
 def keyboard(key, x, y):
     global stop
-    global demonstratemode
+    global demonstrateMode
     global yaw
     global pitch
     global strafeX, strafeZ, cX, cY, cZ
@@ -187,14 +187,14 @@ def keyboard(key, x, y):
         
     if ord(key) == 112:#p: Ativa/Destiva o modo de demonstacao
     
-        if (demonstratemode == False): #Posiciona a camera na posicao inicial
+        if (demonstrateMode == False): #Posiciona a camera na posicao inicial
             yaw = 4.7
             pitch = 0.0
             cX, cY, cZ = [-0.75, 2.0, 3.1]
             strafeX, strafeZ = [0, 0]
-        demonstratemode = not demonstratemode #Liga/desliga modo de demonstacao
+        demonstrateMode = not demonstrateMode #Liga/desliga modo de demonstacao
 
-    if demonstratemode:
+    if demonstrateMode:
         return
     print(ord(key))
     if ord(key) == 119:#'w'
