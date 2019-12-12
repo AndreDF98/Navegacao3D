@@ -6,6 +6,7 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 
 import numpy as np
+import time
 
 import pywavefront
 from pywavefront import visualization
@@ -18,10 +19,12 @@ largura = user32.GetSystemMetrics(0)
 centroTela = [largura // 2, altura // 2]
 matrixVisao = []
 
-yaw = 0.0 #angulo X da camera
-pitch = 0.0 #angulo Y da camera
-cX, cY, cZ = [0.0, 3.0, 3.0] #posicao da camera
+yaw = 4.7 #angulo X da camera
+pitch = -0.5 #angulo Y da camera
+cX, cY, cZ = [-0.75, 2.0, 2.0] #posicao da camera
 strafeX, strafeZ = [0, 0] #deslocamento lateral
+
+demonstratemode = False #Modo de mover camera automaticamente entorno do objeto
 
 #objeto = pywavefront.Wavefront('objetos/extintor.obj')
 #objeto = pywavefront.Wavefront('objetos/cadeira.obj')
@@ -29,35 +32,51 @@ objeto = pywavefront.Wavefront('objetos/laboratorio.obj')
 
 def init():
     global matrixVisao
-    
+    global strafeX
+    global strafeZ
     glEnable(GL_DEPTH_TEST)
     glEnable(GL_LIGHTING)
     glShadeModel(GL_SMOOTH)
     glColorMaterial(GL_BACK, GL_DIFFUSE)
     glEnable(GL_COLOR_MATERIAL)
     glClearColor(0.1, 0.1, 0.1, 0.0)
-    glutSetCursor(GLUT_CURSOR_DESTROY)
+    glutSetCursor(GLUT_CURSOR_NONE)
 
     glEnable(GL_LIGHT0)
     glLightfv(GL_LIGHT0, GL_AMBIENT, [0.5, 0.5, 0.5, 1])
     glLightfv(GL_LIGHT0, GL_DIFFUSE, [1.0, 1.0, 1.0, 1])
     glLightfv(GL_LIGHT0, GL_POSITION, [1, -1, 1, 0])
-
+    
     glMatrixMode(GL_PROJECTION)
-    gluPerspective(45, (largura/altura), 0.1, 50.0)
+    gluPerspective(70, (largura/altura), 0.1, 50.0)
     glMatrixMode(GL_MODELVIEW)
-    gluLookAt(0, 3, 3, 0, 0, 0, 0, 1, 0)
     matrixVisao = glGetFloatv(GL_MODELVIEW_MATRIX)
     #perspectiveView
     glLoadIdentity()
-
+    x = np.cos(yaw) * np.cos(pitch)
+    y = np.sin(pitch)
+    z = np.sin(yaw) * np.cos(pitch)
+    gluLookAt(cX, cY, cZ, cX + x, cY + y, cZ + z, 0, 1, 0)
+    
+def demonstrate():
+    global yaw
+    global cX
+    global cZ
+    cX += 0.03 * strafeX
+    cZ += 0.03 * strafeZ
+    yaw+=0.0075
+    time.sleep(0.01)
+    refresh()
+    
 def display():
+    glFlush()
+    if demonstratemode:
+        demonstrate()
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     
     visualization.draw(objeto)
-    
     glutSwapBuffers()
-    glFlush ()
+    glFlush()
 
 def reshape(l, a):
     global altura
@@ -67,7 +86,7 @@ def reshape(l, a):
     
 def cliqueMouse(botao, estado, x, y):
     return
-
+    
 def refresh():
     global strafeX
     global strafeZ
@@ -78,32 +97,37 @@ def refresh():
     
     strafeX = np.cos(yaw - np.pi/2)
     strafeZ = np.sin(yaw - np.pi/2)
-    
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
     gluLookAt(cX, cY, cZ, cX + x, cY + y, cZ + z, 0, 1, 0)
 
+
+def movimentoMouse1(x,y):
+    pass
+    
 def movimentoMouse(x, y):
+    global demonstratemode
     global yaw
     global pitch
     
-    limite = 1.5
-    vel = 0.02
-    
-    dx = x - centroTela[0]
-    dy = y - centroTela[1]
-    
-    if dx:
-        yaw += dx * vel
-        refresh()
-    
-    if dy:
-        pitch -= dy * vel
-        if pitch < (-limite):
-            pitch = -limite
-        if pitch > limite:
-            pitch = limite
-        refresh()
+    if not demonstratemode:
+        limite = 1.5
+        vel = 0.01
+        
+        dx = x - centroTela[0]
+        dy = y - centroTela[1]
+        
+        if dx:
+            yaw += dx * vel
+            refresh()
+        
+        if dy:
+            pitch -= dy * vel
+            if pitch < (-limite):
+                pitch = -limite
+            if pitch > limite:
+                pitch = limite
+            refresh()
 
     glutWarpPointer(centroTela[0], centroTela[1])
     
@@ -136,13 +160,41 @@ def moveX(vel): #move pra esquerda ou direita
     
     refresh()
 
-def keyboard(key, x, y):
+def moveY(up): #move pra esquerda ou direita
+    global cY
+    
+    if up:
+        glTranslatef(0,0.12,0)
+        cY -= 0.12
+    else:
+        glTranslatef(0,-0.12,0)
+        cY += 0.12
+    refresh()
 
+def keyboard(key, x, y):
+    global stop
+    global demonstratemode
+    global yaw
+    global pitch
+    global strafeX, strafeZ, cX, cY, cZ
+    
     if ord(key) == 27:#'esc'  
         glutDestroyWindow(id)
         sys.exit(0)
+        
+    if ord(key) == 112:#p: Ativa/Destiva o modo de demonstacao
     
-    vel = 0.2
+        if (demonstratemode == False): #Posiciona a camera na posicao inicial
+            yaw = 4.7
+            pitch = 0.0
+            cX, cY, cZ = [-0.75, 2.0, 3.1]
+            strafeX, strafeZ = [0, 0]
+        demonstratemode = not demonstratemode #Liga/desliga modo de demonstacao
+
+    if demonstratemode:
+        return
+ 
+    vel = 0.12
     
     if ord(key) == 119:#'w'
         moveZ(vel)
@@ -152,8 +204,13 @@ def keyboard(key, x, y):
         moveX(vel)
     if ord(key) == 100:#'d'
         moveX(-vel)
-    
+    if ord(key) == 102:#f Sobe
+        moveY(True)
+    if ord(key) == 114:#r Desce
+        moveY(False)
+        
     glutPostRedisplay()
+
 
 glutInit(sys.argv) 
 glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)
@@ -165,7 +222,6 @@ glutDisplayFunc(display)
 glutReshapeFunc(reshape)
 glutMouseFunc(cliqueMouse)
 glutPassiveMotionFunc(movimentoMouse)
-glutMotionFunc(movimentoMouse)
 glutKeyboardFunc(keyboard)
 
 glutFullScreen()
