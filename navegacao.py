@@ -19,6 +19,8 @@ largura = user32.GetSystemMetrics(0)
 centroTela = [largura // 2, altura // 2]
 matrixVisao = []
 
+velocidade = 0.1 #Velocidade de movimentacao
+
 yaw = 4.7 #angulo X da camera
 pitch = -0.5 #angulo Y da camera
 cX, cY, cZ = [-0.75, 2.0, 2.0] #posicao da camera
@@ -177,6 +179,7 @@ def keyboard(key, x, y):
     global yaw
     global pitch
     global strafeX, strafeZ, cX, cY, cZ
+    global velocidade
     
     if ord(key) == 27:#'esc'  
         glutDestroyWindow(id)
@@ -193,22 +196,36 @@ def keyboard(key, x, y):
 
     if demonstratemode:
         return
- 
-    vel = 0.12
-    
+    print(ord(key))
     if ord(key) == 119:#'w'
-        moveZ(vel)
-    if ord(key) == 115:#'s'
-        moveZ(-vel)
-    if ord(key) == 97:#'a'
-        moveX(vel)
-    if ord(key) == 100:#'d'
-        moveX(-vel)
-    if ord(key) == 102:#f Sobe
+        moveZ(velocidade)
+    elif ord(key) == 23:#Ctrl + w
+        moveZ(velocidade*0.5)
+    elif ord(key) == 87:#W
+        moveZ(velocidade*1.5)
+    elif ord(key) == 115:#'s'
+        moveZ(-velocidade)
+    elif ord(key) == 19:#Ctrl + s
+        moveZ(-velocidade*0.5)
+    elif ord(key) == 83:#S
+        moveZ(-velocidade*1.5)
+    elif ord(key) == 97:#'a'
+        moveX(velocidade)
+    elif ord(key) == 1:#Ctrl + a
+        moveX(velocidade*0.5)
+    elif ord(key) == 65:#A
+        moveX(velocidade*1.5)
+    elif ord(key) == 100:#'d'
+        moveX(-velocidade)
+    elif ord(key) == 4:#Ctrl + d
+        moveX(-velocidade*0.5)
+    elif ord(key) == 68:#D
+        moveX(-velocidade*1.5)
+    elif ord(key) == 102:#f Sobe
         moveY(True)
-    if ord(key) == 114:#r Desce
+    elif ord(key) == 114:#r Desce
         moveY(False)
-        
+            
     glutPostRedisplay()
 
 
